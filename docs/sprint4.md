@@ -32,9 +32,9 @@ Let's add a route for `DELETE /api/albums/:id` to our server.
 
   > HTTP DELETE often [doesn't have a defined body.](http://tools.ietf.org/html/rfc7231#section-4.3.5)
 
-1. Find the `_id` for an album that exists in your database, and use it to test your route with curl or postman.
+2. Find the `_id` for an album that exists in your database, and use it to test your route with curl or postman.
 
-1. Connect this route's behavior to the database, and have it delete the specified album.  Test the route's response again, and make sure the album has been deleted from the database.
+3. Connect this route's behavior to the database, and have it delete the specified album.  Test the route's response again, and make sure the album has been deleted from the database.
 
 
 ## Step 3: Connection
@@ -45,9 +45,9 @@ Now you can tie the previous front-end and back-end changes together.
 
   > Note jQuery doesn't have a `$.delete` method.  Use `$.ajax`.
 
-1. In the client-side code, remove the deleted album from the page.
+2. In the client-side code, remove the deleted album from the page.
 
-1. Refresh the page to get the full list of albums back, and make sure albums are truly being deleted.
+3. Refresh the page to get the full list of albums back, and make sure albums are truly being deleted.
 
 > If you run out of things to delete, try re-seeding your database.
 
