@@ -40,20 +40,20 @@ We're going to create an embedded model for songs and embed it in albums.  We've
 
 1. Create a `models/song.js` file.
 
-1. Open the file and create a song schema with properties including:
+2. Open the file and create a song schema with properties including:
 
   ```js
     name: String,
     trackNumber: Number
   ```
 
-1. Use your schema to create a `Song` model.
+3. Use your schema to create a `Song` model.
 
-1. Export the `Song` model, and require it in `models/index.js`.
+4. Export the `Song` model, and require it in `models/index.js`.
 
-1. Require `./song.js` in `./albums.js`.
+5. Require `./song.js` in `./albums.js`.
 
-1. Alter the `AlbumSchema` to have a `songs` array that uses the song schema (available through the model as `Song.schema`).
+6. Alter the `AlbumSchema` to have a `songs` array that uses the song schema (available through the model as `Song.schema`).
 
 > You may have seen embedded models defined in the same file as the model that it's embedded in; that's OK.  Here we're building it in a separate file.
 
@@ -81,7 +81,7 @@ We'd like to list songs along with each album.  For now, keep this simple using 
 ```html
 <li class="list-group-item">
   <h4 class="inline-header">Songs:</h4>
-  <span>	– (1) Swamped – (2) Heaven's a Lie – (3) Daylight Dancer – (4) Humane – (5) Self Deception – (6) Aeon – (7) Tight Rope – </span>
+  <span> – (1) Swamped – (2) Heaven's a Lie – (3) Daylight Dancer – (4) Humane – (5) Self Deception – (6) Aeon – (7) Tight Rope – </span>
 </li>
 ```
 
@@ -89,7 +89,7 @@ We'd like to list songs along with each album.  For now, keep this simple using 
 
   Hint: You can use the array method `.join()` to quickly combine all the song names, but a better solution would probably involve first using `.map` to build up an array of HTML strings (e.g. `["- (1) Swamped", "- (2) Heaven's a Lie"]`) before joining them together.
 
-1. Test to make sure this is working. Once your template is set, you should see the songs listed under each album on the page.
+2. Test to make sure this is working. Once your template is set, you should see the songs listed under each album on the page.
 
 ## Step 4: Create Songs
 
@@ -119,13 +119,13 @@ First, we need to make sure we have the album id so we can use it later.  To get
 
 1. In the album template string, add a new `data-album-id` attribute to the top `<div class='row album'>`.
 
-1. Set the value of that attribute to `album._id`.
+2. Set the value of that attribute to `album._id`.
 
-1. Refresh the page and inspect the HTML in the browser.  Make sure the attribute is set and is different for each album. Here's an example:
+3. Refresh the page and inspect the HTML in the browser.  Make sure the attribute is set and is different for each album. Here's an example:
 
   ![example](assets/images/sprint3_album_id_example.png)
 
-1. Add a button inside the panel footer:
+4. Add a button inside the panel footer:
 
   [button inside panel footer](assets/images/sprint3_add_song_button.png).
 
@@ -142,9 +142,9 @@ First, we need to make sure we have the album id so we can use it later.  To get
 
 
 
-1. Use jQuery to bind an event handler to these buttons' click events.  Test it by having it `console.log` when there's a click.
+5. Use jQuery to bind an event handler to these buttons' click events.  Test it by having it `console.log` when there's a click.
 
-1. In your click event handler, get the current album row's `data-album-id` attribute.
+6. In your click event handler, get the current album row's `data-album-id` attribute.
 
   ```js
   $('#albums').on('click', '.add-song', function(e) {
@@ -159,7 +159,7 @@ First, we need to make sure we have the album id so we can use it later.  To get
   > We've added a  CSS selector as a second argument to the `on` method. Because the `.add-song` element is not going to be on the page at document-ready, our event listener cannot bind to it at that time.  Instead, we'll bind to something above it in the DOM tree, like `body` or `#albums`. As long as that element is on the page when we add our event listener, we will be able to capture the click. Then, if it's on an element with class `.add-song`, jQuery will trigger this event handler.
 
 
-1.  Set the data attribute `album-id` on the `#songModal`.  We'll use this to keep track of which album the modal is referring to at any time.
+7.  Set the data attribute `album-id` on the `#songModal`.  We'll use this to keep track of which album the modal is referring to at any time.
 
   <details><summary>Hint: setting `data-album-id`</summary>
 
@@ -169,7 +169,7 @@ First, we need to make sure we have the album id so we can use it later.  To get
 
   </details>
 
-1. You can open a Bootstrap modal by selecting it in jQuery and calling Bootstrap's `.modal()` function.  After setting the `data-album-id` attribute in your function, click your button to trigger the modal.  It should appear on screen!
+8. You can open a Bootstrap modal by selecting it in jQuery and calling Bootstrap's `.modal()` function.  After setting the `data-album-id` attribute in your function, click your button to trigger the modal.  It should appear on screen!
 
   > Suggested reading: [Bootstrap docs on modal usage](http://getbootstrap.com/javascript/#modals-usage)
 
