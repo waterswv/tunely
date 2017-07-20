@@ -39,6 +39,7 @@ sampleAlbums.push({
 
 $(document).ready(function() {
   console.log('app.js loaded!');
+  renderAlbum(sampleAlbums[0])
 });
 
 
@@ -47,6 +48,9 @@ $(document).ready(function() {
 
 // this function takes a single album and renders it to the page
 function renderAlbum(album) {
+  $('.album-name').append(`${album.name}`);
+  $('.artist-name').append(`${album.artistName}`);
+  $('.album-releaseDate').append(`${album.releaseDate}`);
   console.log('rendering album:', album);
 
 }
