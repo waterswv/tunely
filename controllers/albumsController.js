@@ -33,7 +33,7 @@ albums.push({
 
 // GET /api/albums
 function index(req, res) {
-  // send back all albums as JSON
+  res.json(albums);
 }
 
 // POST /api/albums

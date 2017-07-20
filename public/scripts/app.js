@@ -39,11 +39,23 @@ sampleAlbums.push({
 
 $(document).ready(function() {
   console.log('app.js loaded!');
-    sampleAlbums.forEach(function(i){
-      renderAlbum(i);
-    });
+    $.ajax({
+    method: 'GET',
+    url: '/api/albums',
+    success: handleSuccess,
+    error: handleError
+  });
 });
 
+function handleSuccess(albums){
+    albums.forEach(function(i){
+      renderAlbum(i);
+    });
+};
+
+function handleError(err){
+  console.log('There has been an error: ', err);
+}
 
 
 // this function takes a single album and renders it to the page
