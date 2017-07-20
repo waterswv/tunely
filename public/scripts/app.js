@@ -100,6 +100,13 @@ function renderAlbum(album) {
   $('#albums').append(albumHtml);
 };
 
+$('album-form form').on('submit', function(e){
+  e.preventDefault();
+  let formData = $(this).serialize();
+  console.log(formData);
+})
+
+
 
 // this function takes a single album and renders it to the page
 // sampleAlbums.forEach()
