@@ -39,9 +39,10 @@ sampleAlbums.push({
 
 $(document).ready(function() {
   console.log('app.js loaded!');
-  renderAlbum(sampleAlbums[0])
+    sampleAlbums.forEach(function(i){
+      renderAlbum(i);
+    });
 });
-
 
 
 
@@ -85,7 +86,7 @@ function renderAlbum(album) {
     <!-- end one album -->
   `);
   $('#albums').append(albumHtml);
-}
+};
 
 
 // this function takes a single album and renders it to the page
