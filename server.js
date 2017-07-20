@@ -26,6 +26,8 @@ app.get('/', function (req, res) {
 });
 
 app.get('/api', controllers.api.index);
+app.get('/api/albums', controllers.albums.index);
+
 
 app.listen(process.env.PORT || 3000, function (){
   console.log("Express Server is up and running on http://localhost:3000/");
