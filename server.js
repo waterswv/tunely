@@ -3,7 +3,6 @@ let express = require('express'),
   bodyParser = require('body-parser');
 
   // connect to models
-
   let db = require('./models');
 
 // generate a new express app and call it 'app'
