@@ -7,7 +7,7 @@ let mongoose = require('mongoose'),
        artistName: String,
        name: String,
        releaseDate: String,
-       genres:[]
+       genres: [String]
   });
 // create Schema
 
