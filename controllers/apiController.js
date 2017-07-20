@@ -1,4 +1,5 @@
 // controllers/apiController.js
+// This documents our api and endpoints within the API. You can call this function to return the documentation
 function index(req, res) {
   res.json({
     message: 'Welcome to tunely!',
@@ -10,4 +11,10 @@ function index(req, res) {
       }
     ]
   });
+}
+
+module.exports = {
+
+  index: index
+
 }

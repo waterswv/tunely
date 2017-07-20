@@ -8,6 +8,9 @@ let express = require('express'),
 // generate a new express app and call it 'app'
   let app = express();
 
+// requiring controllers to connect to controller directory
+  let controllers = require('./controllers');
+
   // server static files from public folder
   app.use(express.static('public'));
 
@@ -21,6 +24,8 @@ app.get('/', function (req, res) {
   res.sendFile('views/index.html', {root:__dirname});
     console.log(__dirname);
 });
+
+app.get('/api', controllers.api.index);
 
 app.listen(process.env.PORT || 3000, function (){
   console.log("Express Server is up and running on http://localhost:3000/");
