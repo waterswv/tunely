@@ -35,8 +35,13 @@ function renderMultipleAlbums(albums) {
 
 function renderAlbum(album) {
   console.log('rendering album', album);
+
+  var songData = album.song.map(function(song, i){
+    return `- (${i+1}) ${song.name} `;
+  })
+
   var albumHtml = (`
-    <div class="row album">
+    <div class="row album data-album-id">
 
       <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-default">
@@ -68,7 +73,7 @@ function renderAlbum(album) {
 
                   <li class="list-group-item">
                   <h4 class="inline-header">Songs:</h4>
-                  <span> – (1) Swamped – (2) Heaven's a Lie – (3) Daylight Dancer – (4) Humane – (5) Self Deception – (6) Aeon – (7) Tight Rope – </span>
+                  <span class='album-songs'>${songData.join(" ")}</span>
                   </li>
                 </ul>
               </div>
@@ -85,5 +90,6 @@ function renderAlbum(album) {
     </div>
     <!-- end one album -->
   `);
+
   $('#albums').prepend(albumHtml);
 }
