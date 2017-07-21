@@ -21,7 +21,7 @@ $(document).ready(function() {
     console.log('formData', formData);
     $.post('/api/albums', formData, function(album) {
       console.log('album after POST', album);
-      renderAlbum(album);  //render the server's response
+      renderAlbum(album); //render the server's response
     });
     $(this).trigger("reset");
   });
@@ -64,6 +64,11 @@ function renderAlbum(album) {
                   <li class="list-group-item">
                     <h4 class='inline-header'>Released date:</h4>
                     <span class='album-releaseDate'>${album.releaseDate}</span>
+                  </li>
+
+                  <li class="list-group-item">
+                  <h4 class="inline-header">Songs:</h4>
+                  <span> – (1) Swamped – (2) Heaven's a Lie – (3) Daylight Dancer – (4) Humane – (5) Self Deception – (6) Aeon – (7) Tight Rope – </span>
                   </li>
                 </ul>
               </div>
