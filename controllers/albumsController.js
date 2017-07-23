@@ -59,8 +59,7 @@ function update(req, res) {
   // and send it back as JSON
 }
 
-
-// export public methods here
+// controllers/albumsController.js
 module.exports = {
   index: index,
   create: create,

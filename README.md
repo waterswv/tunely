@@ -12,7 +12,7 @@ This lab is all about practicing the skills you've been developing over the past
 - create a JSON CRUD API on `/api` routes in an Express server
 - serve static content on non-`/api` routes in an Express server
 - make AJAX requests with jQuery
-- template JSON data with handlebars
+- render JSON data with template strings
 - create the client/server/database connections required for a full stack application
 
 
@@ -56,7 +56,7 @@ This lab begins with a basic front-end to display a list of music albums.  As we
 
 ### Project Planning and Approach
 
-####Planning
+#### Planning
 
 When working on large projects, it's important to do a good amount of planning and whiteboarding before you start coding.  
 
@@ -80,22 +80,19 @@ We will also be breaking our work into short **sprints** with specific design go
 ## Getting Started
 
 1. Fork and clone this repository, and `cd` into your local copy.
-1. Run `npm install`, which will:
-  * install back-end packages from package.json
+1. Run `npm install`, which will install back-end packages from `package.json`.
 1. Start the server with `node server.js`, `npm start`, or `nodemon`.
 1. View the site at `localhost:3000`.
-1. Read the rest of this readme, then continue to Sprint 1.
+1. Read the rest of this readme, then continue to Sprint 0.
 
 
 ## Workflow
 
 You'll complete this lab in rotating pairs!  This is a challenging project, so remember the teamwork strategies you've built up recently.  
 
-One person will drive, and the other will navigate. The driver should fork and clone this repo.
+One person will drive, and the other will navigate. The driver should fork and clone this repo, and is the one with their hands on the computer; the navigator is directing the driver in where to write code and what code to write. At intervals, you should switch roles: the driver should become the navigator, and the navigator should become the driver.
 
-At intervals, navigators will switch to work with a new driver.  After switching, discuss your recent work.  Start back from the point where you last **both** felt comfortable.  
-
-Later, we'll switch roles so navigators become drivers to continue the process!
+Later in the day, we will switch partners, so you get the experience of pair programming with more than one person.  After switching, discuss your recent work.  Start back from the point where you last **both** felt comfortable.  
 
 ## Sprints
 
@@ -141,7 +138,7 @@ There is a solution branch in this repository for each sprint. For the most part
 
 1. Check out the desired solutions branch to start from:
 
-  > `git checkout solutions_sprint_3`
+  > `git checkout 36/solutions_sprint_3`
 
 1. Create a new branch from the solution branch for your work:
 

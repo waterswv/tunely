@@ -1,6 +1,3 @@
-// This file allows us to seed our application with data
-// simply run: `node seed.js` from the root of this project folder.
-
 var db = require("./models");
 
 var albumList =[];
@@ -68,5 +65,4 @@ db.Album.remove({}, function(err, albums){
     console.log("created", albums.length, "albums");
     process.exit();
   });
-
 });

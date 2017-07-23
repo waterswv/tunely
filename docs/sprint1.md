@@ -22,7 +22,7 @@ Check your work from sprint 0 by referencing the solutions on GitHub. In particu
 
 Let's start on the outside and work our way in.  
 
-1. Open `index.html` in your text editor and find the HTML for a single **album**.  This is a hard-coded sample set up for you to show the desired HTML structure.  Convert this into an html template named `albumHtml` inside the `renderAlbum` function in `app.js`. Replace the hardcoded album information with the album object's attributes.  Here's an example: 
+1. Open `index.html` in your text editor and find the HTML for a single **album**.  This is a hard-coded sample set up for you to show the desired HTML structure.  Convert this into an html template named `albumHtml` inside the `renderAlbum` function in `app.js`. Replace the hardcoded album information with the album object's attributes.  Here's an example:
 
 ```js
     <li class='list-group-item'>
@@ -37,8 +37,8 @@ Notice the object attribute is surrounded by curly braces and starts with a peso
 Leave the`div` with class `albums` in place.
 
 Your element with template strings should look like this:
-  
-  
+
+
 ```javascript  
 var albumHtml = (`
             <!-- one album -->
@@ -91,20 +91,83 @@ To render the **first** element of the array, try this out:
   });
   ```
 
+  </details>
 
 
 
 
+  At this point you should see all the hard-coded albums from `app.js`'s `sampleAlbums` rendered on page.
 
+2. Now, we're going to break this piece of code again, with the intention of fixing it by improving our server side routes. **Add an AJAX call** that will GET all of the albums from the path `/api/albums`. Upon a successful response from the server, this AJAX call should render the data to the page.
 
+<details><summary>Click to see how to request and render all of the albums with a template string</summary>
 
-## Step 1.5: Rendering all the albums.
+```js
+$(document).ready(function() {
+  console.log('app.js loaded!');
 
-1. Update your code to use **all** the sample albums in the `sampleAlbums` array by rendering each one individually and adding it to the page.  Try to use `sampleAlbums.forEach` to call `renderAlbum` on each album. 
+  // make a get request for all albums
+  $.ajax({
+    method: 'GET',
+    url: '/api/albums',
+    success: handleSuccess,
+    error: handleError
+  });
+});
 
+function handleSuccess (albums) {
+    albums.forEach(function(album) {
+      renderAlbum(album);
+    });
+};
 
-At this point you should see all the hard-coded albums from `app.js`'s `sampleAlbums` rendered on page, and the original hard-coded album should be gone.  
+function handleError(err){
+  console.log('There has been an error: ', err);
+}
 
+// this function takes in a single album and renders it to the page
+function renderAlbum(album) {
+  console.log('rendering album', album);
+  var htmlToAppend = (`
+    <div class='row'>
+      <div class="col-md-3 col-xs-12 thumbnail album-art">
+        <img src="images/800x800.png" alt="album image">
+      </div>
+
+      <div class="col-md-9 col-xs-12">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <h4 class='inline-header'>Album Name:</h4>
+            <span class='album-name'>${album.name}</span>
+          </li>
+
+          <li class="list-group-item">
+            <h4 class='inline-header'>Artist Name:</h4>
+            <span class='artist-name'>${album.artistName}</span>
+          </li>
+
+          <li class="list-group-item">
+            <h4 class='inline-header'>Released date:</h4>
+            <span class='album-releaseDate'>${album.releaseDate}</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  `);
+
+  $('#albums').prepend(htmlToAppend);
+};
+
+```
+
+</details>
+
+Because the GET `/api/albums` route isn't configured yet, our site won't display data anymore. You should now see an error in your console:
+
+![image](https://cloud.githubusercontent.com/assets/6520345/21326987/da46d312-c5e1-11e6-90ee-d352bdd65a4e.png)
+
+Let's fix it by working on the server side to get that route working!
 
 
 ## Step 2: Albums Index
@@ -127,12 +190,7 @@ We'll use the module pattern to make these "controller" functions available in t
 
 1. Update the `index` function to respond with JSON for all the albums.
 
-1. In `app.js`, use AJAX to get the albums.  Render them on the page.
-
-1. You should be able to safely delete the hard-coded data in `app.js` now!
-
-> The data in `server.js` and `app.js` is different. This should make it easier to see which data is being rendered on your page.
-
+1. The `$.ajax` call in `app.js` should be functional now! Check in the browser to see that your server-side data is rendering and that the error messages aren't showing up anymore.
 
 ## Step 3: Database Setup
 
@@ -146,7 +204,7 @@ We'll use the module pattern to make these "controller" functions available in t
 1. Require the `Album` model in `models/index.js`.  Then add it into the `exports` object for `models/index.js`. Inside the `exports` object, the key should be "Album" and the value should be the `Album` model.
 
 
-  <details><summary>click to see a completed `models/albums.js`</summary>
+  <details><summary>click to see a completed models/albums.js</summary>
 
   ```js
   //models/album.js
@@ -164,7 +222,7 @@ We'll use the module pattern to make these "controller" functions available in t
 
   </details>
 
-  <details><summary>click to see a completed `models/index.js`</summary>
+  <details><summary>click to see a completed models/index.js</summary>
 
   ```js
   module.exports.Album = require("./album.js");
@@ -185,7 +243,7 @@ We'll use the module pattern to make these "controller" functions available in t
 
 1. Resolve any errors you encounter.
 
-<details><summary>hint: `error connect ECONNREFUSED`</summary>
+<details><summary>hint: <code>error connect ECONNREFUSED</code></summary>
 If you see an error like:
 
 ```
@@ -210,7 +268,7 @@ Now that the database is seeded, let's transition to using the database in our `
 
 1. Verify that you're getting the right data on your home page now.  Your AJAX should still work. If the attribute names in the data have changed at all, you'll have to resolve that.
 
-<details><summary>hint: requiring `./models`</summary>
+<details><summary>hint: requiring ./models</summary>
 
 ```js
 var db = require('./models');

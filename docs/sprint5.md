@@ -20,17 +20,17 @@ This sprint we will:
 
 We're going to add a button that allows our users to edit an album.
 
-1. Add a new button to each `panel-footer` in the Handlebars template.
+1. Add a new button to each `panel-footer` in the album template string.
 
   ```html
-  <button class='btn btn-info edit-album'>Edit Album</button>`
+  <button class='btn btn-info edit-album'>Edit Album</button>
   ```
 
-1. Use jQuery to react to clicks on these buttons and determine the correct `album-id`.  Then `console.log` it.
+2. Use jQuery to react to clicks on these buttons and determine the correct `album-id`.  Then `console.log` it.
 
-1. When the `Edit` button is clicked, replace it with a `Save Changes` button. Remember to reverse this change when the edit is finished.
+3. When the `Edit` button is clicked, replace it with a `Save Changes` button. Remember to reverse this change when the edit is finished.
 
-1. Also replace the major fields on the album with `input` elements.
+4. Also replace the major fields on the album with `input` elements.
 
 
 > Hint: you could have 2 buttons in place already, 1) "Edit", 2) "Save changes" and simply toggle their visibility with [$.toggle](http://api.jquery.com/toggle/)
@@ -60,7 +60,7 @@ We're going to add a button that allows our users to edit an album.
   * You should do this when you get a response to your PUT request.
   * Use the response data from the PUT request.
 
-> Hint: you already have a render function, ね(ne)?
+> Hint: you already have a render function
 
 
 
