@@ -31,6 +31,10 @@ $(document).ready(function() {
 
   // save song modal save button
   $('#saveSong').on('click', handleNewSongSubmit);
+
+  // catch and handle click on delete an album button
+  $('#albums').on('click', '.delete-album', handleAlbumDeleteClick);
+
 });
 
 function renderMultipleAlbums(albums) {
@@ -41,6 +45,21 @@ function renderMultipleAlbums(albums) {
 
 function renderSong(song){
   return `<span>&ndash; (${song.trackNumber}) ${song.name} &ndash;</span>`
+}
+
+function handleAlbumDeleteClick (album) {
+  console.log("you clicked the Delete button")
+  var albumId = $(this).closest('.album').data('album-id');
+  console.log('Selected Album _id: ',albumId)
+  $('[data-album-id=' + albumId + ']').remove();
+
+  $.ajax({
+    method: 'DELETE',
+    url: '/api/albums/' + albumId,
+
+
+  });
+
 }
 
 function renderAlbum(album) {
@@ -93,6 +112,7 @@ function renderAlbum(album) {
             <div class='panel-footer'>
               <div class='panel-footer'>
                 <button class='btn btn-primary add-song'>Add Song</button>
+                <button class='btn btn-primary delete-album'>Delete Album</button>
               </div>
 
             </div>

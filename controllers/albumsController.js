@@ -41,6 +41,16 @@ function show(req, res) {
 // DELETE /api/albums/:albumId
 function destroy(req, res) {
   // find one album by id, delete it, and send it back as JSON
+  console.log(req.params.albumId);
+
+  db.Album.findOneAndRemove(req.params.albumId, function (err, album) {
+    if (err) {
+      console.log('failed to find album', err);
+    }
+    res.json(album);
+  });
+
+
 }
 
 // PUT or PATCH /api/albums/:albumId
